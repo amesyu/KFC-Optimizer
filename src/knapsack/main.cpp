@@ -85,14 +85,6 @@ public:
         return LatticeVector(newItems);
     }
 
-    LatticeVector operator*(int scalar) const {
-        std::vector<Item> newItems;
-        for (const auto& it : *this) {
-            if (scalar * it.count > 0) newItems.push_back({it.name, scalar * it.count});
-        }
-        return LatticeVector(newItems);
-    }
-
     bool operator==(const LatticeVector& other) const {
         return this->less(other) == false && other.less(*this) == false;
     }
@@ -125,9 +117,16 @@ struct Element {
     Element() = default;
     Element(const LatticeVector& latticeVector, std::string name, int price, int limit = -1) 
         : latticeVector(latticeVector), price(price), limit(limit) {}
+
+    bool operator==(const Element& other) const {
+        if (name != other.name) return false;
+        if (price != other.price) return false;
+        if (limit != other.limit) return false;
+        return latticeVector == other.latticeVector;
+    }
 };
 
-int MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeVector& target, bool exact = true) {
+std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeVector& target, bool exact = true) {
     // dp[State] = min price
     // sweep all state in lexicographical order if menu is unlimited
     // otherwise, reverse theo order
@@ -157,24 +156,39 @@ int MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeVector& t
     dp[LatticeVector()] = 0;
     
     for (const auto& menu : menus) {
-        for (int i = 0; i < (int)states.size(); ++i) {
-            int idx = (menu.limit == -1) ? i : (int)states.size() - 1 - i;
-            int loop = (menu.limit == -1) ? 1 : menu.limit;
-            if (dp[states[idx]] == INT_MAX) continue;
-            for (int cnt = 1; cnt <= loop; ++cnt) {
-                LatticeVector nextState = (states[idx] + menu.latticeVector * cnt);
-                LatticeVector meetState = nextState.meet(target);
-                if (nextState != meetState && exact) continue;
-                if (dp[states[idx]] + menu.price * cnt < dp[meetState]) {
-                    dp[meetState] = dp[states[idx]] + menu.price * cnt;
-                    previous[meetState] = states[idx];
-                    lastMenu[meetState] = menu;
+        int loopCount = (menu.limit == -1) ? 1 : menu.limit;
+        for (int cnt = 0; cnt < loopCount; ++cnt) {
+            for (int i = 0; i < (int)states.size(); ++i) {
+                int idx = (menu.limit == -1) ? i : (int)states.size() - 1 - i;
+                int loop = (menu.limit == -1) ? 1 : menu.limit;
+                if (dp[states[idx]] == INT_MAX) continue;
+                for (int cnt = 1; cnt <= loop; ++cnt) {
+                    LatticeVector nextState = (states[idx] + menu.latticeVector);
+                    LatticeVector meetState = nextState.meet(target);
+                    if (nextState != meetState && exact) continue;
+                    if (dp[states[idx]] + menu.price < dp[meetState]) {
+                        dp[meetState] = dp[states[idx]] + menu.price;
+                        previous[meetState] = states[idx];
+                        lastMenu[meetState] = menu;
+                    }
                 }
             }
         }
     }
 
-    return dp[target] == INT_MAX ? -1 : dp[target];
+    if (dp[target] == INT_MAX) {
+        return std::make_pair(-1, std::vector<Element>());
+    }
+
+    std::vector<Element> result;
+    LatticeVector cur = target;
+    while (cur.size() > 0) {
+        const auto& menu = lastMenu[cur];
+        result.push_back(menu);
+        cur = previous[cur];
+    }
+    std::reverse(result.begin(), result.end());
+    return std::make_pair(dp[target], result);
 };
 
 std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
@@ -183,7 +197,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
         std::vector<Element> menus;
         LatticeVector target;
         int exact;
-        int expected;
+        std::pair<int, std::vector<Element>> expected;
     };
 
     std::vector<TestCase> testCases = {
@@ -195,7 +209,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
             },
             .target = LatticeVector({Item{"A", 1}, Item{"B", 1}}),
             .exact = false,
-            .expected = 200
+            .expected = {200, {Element({Item{"A", 1}, Item{"B", 1}}, "A1 & B1", 200)}}
         },
         {
             .menus = {
@@ -203,7 +217,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
             },
             .target = LatticeVector({Item{"C", 2}}),
             .exact = false,
-            .expected = -1
+            .expected = {-1, {}}
         },
         {
             .menus = {
@@ -212,7 +226,13 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
             },
             .target = LatticeVector({Item{"A", 1}, Item{"B", 2}}),
             .exact = false,
-            .expected = 400
+            .expected = {400,
+                {
+                    Element({Item{"A", 1}}, "A1", 100, 1),
+                    Element({Item{"B", 1}}, "B1", 150, 3),
+                    Element({Item{"B", 1}}, "B1", 150, 3)
+                }
+            }
         },
         {
             .menus = {
@@ -221,26 +241,30 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
             },
             .target = LatticeVector({Item{"A", 1}}),
             .exact = true,
-            .expected = -1
+            .expected = {-1, {}}
         }
     };
 
     for (const auto& [menus, target, exact, expected] : testCases) {
-        int result = MultiDimensionalKnapsackSolver(const_cast<std::vector<Element>&>(menus), const_cast<LatticeVector&>(target), exact);
-        if (result != expected) {
+        auto [result, ansMenus] = MultiDimensionalKnapsackSolver(const_cast<std::vector<Element>&>(menus), const_cast<LatticeVector&>(target), exact);
+        if (result != expected.first || ansMenus != expected.second) {
+            std::string failedMessage = "";
             for (const auto& menu : menus) {
-                std::cout << "Menu: " << menu.name << " | ";
-                for (const auto& item : menu.latticeVector) {
-                    std::cout << item.name << " x" << item.count << " ";
-                }
-                std::cout << "Price: " << menu.price << " Limit: " << menu.limit << std::endl;
+                failedMessage += "Menu: " + menu.name + ", ";
+                failedMessage += "Price: " + std::to_string(menu.price) + ", ";
+                failedMessage += "Limit: " + std::to_string(menu.limit) + ", ";
+                failedMessage += "Items: " + std::string(menu.latticeVector) + "\n";
             }
-            std::cout << "Target: ";
-            for (const auto& item : target) {
-                std::cout << item.name << " x" << item.count << " ";
+            failedMessage += "Target: " + std::string(target) + ", Exact: " + std::to_string(exact) + "\n";
+            failedMessage += "Expected: " + std::to_string(expected.first) + ", Got: " + std::to_string(result) + "\n";
+            failedMessage += "Answer Menus: \n";
+            for (const auto& menu : ansMenus) {
+                failedMessage += "  Menu: " + menu.name + ", ";
+                failedMessage += "Price: " + std::to_string(menu.price) + ", ";
+                failedMessage += "Limit: " + std::to_string(menu.limit) + ", ";
+                failedMessage += "Items: " + std::string(menu.latticeVector);
             }
-            std::cout << "Exact: " << exact << std::endl;
-            return {false, "Test failed: expected " + std::to_string(expected) + ", got " + std::to_string(result)};
+            return {false, failedMessage};
         }
     }
 
