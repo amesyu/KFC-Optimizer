@@ -118,11 +118,12 @@ public:
 
 struct Element {
     LatticeVector latticeVector;
+    std::string name;
     int price;
     int limit;
 
     Element() = default;
-    Element(const LatticeVector& latticeVector, int price, int limit = -1) 
+    Element(const LatticeVector& latticeVector, std::string name, int price, int limit = -1) 
         : latticeVector(latticeVector), price(price), limit(limit) {}
 };
 
@@ -188,9 +189,9 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
     std::vector<TestCase> testCases = {
         {
             .menus = {
-                Element({Item{"A", 1}}, 100),
-                Element({Item{"B", 1}}, 150),
-                Element({Item{"A", 1}, Item{"B", 1}}, 200)
+                Element({Item{"A", 1}}, "A1", 100),
+                Element({Item{"B", 1}}, "B1", 150),
+                Element({Item{"A", 1}, Item{"B", 1}}, "A1 & B1", 200)
             },
             .target = LatticeVector({Item{"A", 1}, Item{"B", 1}}),
             .exact = false,
@@ -198,7 +199,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
         },
         {
             .menus = {
-                Element({Item{"A", 1}}, 100),
+                Element({Item{"A", 1}}, "A1", 100),
             },
             .target = LatticeVector({Item{"C", 2}}),
             .exact = false,
@@ -206,17 +207,17 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
         },
         {
             .menus = {
-                Element({Item{"A", 1}}, 100, 1), 
-                Element({Item{"B", 1}}, 150, 3),
+                Element({Item{"A", 1}}, "A1", 100, 1),
+                Element({Item{"B", 1}}, "B1", 150, 3),
             },
             .target = LatticeVector({Item{"A", 1}, Item{"B", 2}}),
             .exact = false,
             .expected = 400
         },
         {
-            .menus {
-                Element({Item{"A", 3}}, 150, -1), 
-                Element({Item{"A", 2}}, 100, -1),
+            .menus = {
+                Element({Item{"A", 3}}, "A3", 150, -1),
+                Element({Item{"A", 2}}, "A2", 100, -1),
             },
             .target = LatticeVector({Item{"A", 1}}),
             .exact = true,
@@ -228,7 +229,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
         int result = MultiDimensionalKnapsackSolver(const_cast<std::vector<Element>&>(menus), const_cast<LatticeVector&>(target), exact);
         if (result != expected) {
             for (const auto& menu : menus) {
-                std::cout << "Menu: ";
+                std::cout << "Menu: " << menu.name << " | ";
                 for (const auto& item : menu.latticeVector) {
                     std::cout << item.name << " x" << item.count << " ";
                 }
