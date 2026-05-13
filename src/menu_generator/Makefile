@@ -13,7 +13,6 @@ gen: $(TARGET)
 	./generate.sh
 
 clean:
-	rm -rf tmp
 	rm -f $(TARGET)
 	rm -f menu.json
 
