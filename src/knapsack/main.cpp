@@ -14,12 +14,12 @@ bool operator<(const Item& a, const Item& b) {
 using ItemsMap = std::map<std::string, int>;
 using Items = std::vector<Item>;
 
-struct LatticeVector : public std::vector<Item> {
+struct LatticeOrderedGroup : public std::vector<Item> {
 public:
     using base = std::vector<Item>;
-    LatticeVector() = default;
-    LatticeVector(const base& items) : base(items) { normalize(); }
-    LatticeVector(std::initializer_list<Item> il) : base(il) { normalize(); }
+    LatticeOrderedGroup() = default;
+    LatticeOrderedGroup(const base& items) : base(items) { normalize(); }
+    LatticeOrderedGroup(std::initializer_list<Item> il) : base(il) { normalize(); }
 
     // 正規化: name でソートして同名は合算、count=0 は除去
     void normalize() {
@@ -42,12 +42,12 @@ public:
     }
 
     // 全順序比較(mapでのキーにするために必要)
-    bool less(const LatticeVector& other) const {
+    bool less(const LatticeOrderedGroup& other) const {
         return static_cast<const base&>(*this) < static_cast<const base&>(other);
     }
 
     // meet は要素ごとの min を取る
-    LatticeVector meet(const LatticeVector& other) const {
+    LatticeOrderedGroup meet(const LatticeOrderedGroup& other) const {
         ItemsMap aMap, bMap;
         for (const auto& it : *this) aMap[it.name] = it.count;
         for (const auto& it : other) bMap[it.name] = it.count;
@@ -56,13 +56,13 @@ public:
             int m = std::min(cnt, bMap[name]);
             if (m > 0) newItems.push_back({name, m});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    bool operator<(const LatticeVector& other) const { return less(other); }
+    bool operator<(const LatticeOrderedGroup& other) const { return less(other); }
 
     // 加算は要素ごとの和を取る
-    LatticeVector operator+(const LatticeVector& other) const {
+    LatticeOrderedGroup operator+(const LatticeOrderedGroup& other) const {
         ItemsMap countMap;
         for (const auto& it : *this) countMap[it.name] += it.count;
         for (const auto& it : other) countMap[it.name] += it.count;
@@ -70,29 +70,29 @@ public:
         for (auto& [name, count] : countMap) {
             if (count > 0) newItems.push_back({name, count});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    LatticeVector operator-(const LatticeVector& other) const {
+    LatticeOrderedGroup operator-(const LatticeOrderedGroup& other) const {
         ItemsMap countMap;
         for (const auto& it : *this) countMap[it.name] += it.count;
         for (const auto& it : other) countMap[it.name] -= it.count;
         std::vector<Item> newItems;
         for (auto& [name, count] : countMap) {
-            if (count < 0) throw std::runtime_error("negative count in LatticeVector subtraction");
+            if (count < 0) throw std::runtime_error("negative count in LatticeOrderedGroup subtraction");
             if (count > 0) newItems.push_back({name, count});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    bool operator==(const LatticeVector& other) const {
+    bool operator==(const LatticeOrderedGroup& other) const {
         return this->less(other) == false && other.less(*this) == false;
     }
 
-    LatticeVector& operator+=(const LatticeVector& other) {
+    LatticeOrderedGroup& operator+=(const LatticeOrderedGroup& other) {
         *this = *this + other; return *this;
     }
-    LatticeVector& operator-=(const LatticeVector& other) {
+    LatticeOrderedGroup& operator-=(const LatticeOrderedGroup& other) {
         *this = *this - other; return *this;
     }
 
@@ -109,33 +109,33 @@ public:
 };
 
 struct Element {
-    LatticeVector latticeVector;
+    LatticeOrderedGroup latticeOrderedGroup;
     std::string name;
     int price;
     int limit;
 
     Element() = default;
-    Element(const LatticeVector& latticeVector, std::string name, int price, int limit = -1) 
-        : latticeVector(latticeVector), price(price), limit(limit) {}
+    Element(const LatticeOrderedGroup& latticeOrderedGroup, std::string name, int price, int limit = -1) 
+        : latticeOrderedGroup(latticeOrderedGroup), price(price), limit(limit) {}
 
     bool operator==(const Element& other) const {
         if (name != other.name) return false;
         if (price != other.price) return false;
         if (limit != other.limit) return false;
-        return latticeVector == other.latticeVector;
+        return latticeOrderedGroup == other.latticeOrderedGroup;
     }
 };
 
-std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeVector& target, bool exact = true) {
+std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeOrderedGroup& target, bool exact = true) {
     // dp[State] = min price
     // sweep all state in lexicographical order if menu is unlimited
     // otherwise, reverse theo order
-    std::map<LatticeVector, int> dp;
-    std::map<LatticeVector, LatticeVector> previous;
-    std::map<LatticeVector, Element> lastMenu;
+    std::map<LatticeOrderedGroup, int> dp;
+    std::map<LatticeOrderedGroup, LatticeOrderedGroup> previous;
+    std::map<LatticeOrderedGroup, Element> lastMenu;
 
-    LatticeVector state;
-    std::vector<LatticeVector> states;
+    LatticeOrderedGroup state;
+    std::vector<LatticeOrderedGroup> states;
 
     auto dfs = [&](auto&& self, int idx) -> void {
         if (idx == (int)target.size()) {
@@ -144,7 +144,7 @@ std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<
         }
 
         for (int cnt = 0; cnt <= target[idx].count; ++cnt) {
-            LatticeVector addVec{Item{target[idx].name, cnt}};
+            LatticeOrderedGroup addVec{Item{target[idx].name, cnt}};
             state += addVec;
             self(self, idx + 1);
             state -= addVec;
@@ -153,7 +153,7 @@ std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<
     dfs(dfs, 0);
 
     for (const auto& st : states) dp[st] = INT_MAX;
-    dp[LatticeVector()] = 0;
+    dp[LatticeOrderedGroup()] = 0;
     
     for (const auto& menu : menus) {
         int loopCount = (menu.limit == -1) ? 1 : menu.limit;
@@ -163,8 +163,8 @@ std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<
                 int loop = (menu.limit == -1) ? 1 : menu.limit;
                 if (dp[states[idx]] == INT_MAX) continue;
                 for (int cnt = 1; cnt <= loop; ++cnt) {
-                    LatticeVector nextState = (states[idx] + menu.latticeVector);
-                    LatticeVector meetState = nextState.meet(target);
+                    LatticeOrderedGroup nextState = (states[idx] + menu.latticeOrderedGroup);
+                    LatticeOrderedGroup meetState = nextState.meet(target);
                     if (nextState != meetState && exact) continue;
                     if (dp[states[idx]] + menu.price < dp[meetState]) {
                         dp[meetState] = dp[states[idx]] + menu.price;
@@ -181,7 +181,7 @@ std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<
     }
 
     std::vector<Element> result;
-    LatticeVector cur = target;
+    LatticeOrderedGroup cur = target;
     while (cur.size() > 0) {
         const auto& menu = lastMenu[cur];
         result.push_back(menu);
@@ -195,7 +195,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
 
     struct TestCase {
         std::vector<Element> menus;
-        LatticeVector target;
+        LatticeOrderedGroup target;
         int exact;
         std::pair<int, std::vector<Element>> expected;
     };
@@ -207,7 +207,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
                 Element({Item{"B", 1}}, "B1", 150),
                 Element({Item{"A", 1}, Item{"B", 1}}, "A1 & B1", 200)
             },
-            .target = LatticeVector({Item{"A", 1}, Item{"B", 1}}),
+            .target = LatticeOrderedGroup({Item{"A", 1}, Item{"B", 1}}),
             .exact = false,
             .expected = {200, {Element({Item{"A", 1}, Item{"B", 1}}, "A1 & B1", 200)}}
         },
@@ -215,7 +215,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
             .menus = {
                 Element({Item{"A", 1}}, "A1", 100),
             },
-            .target = LatticeVector({Item{"C", 2}}),
+            .target = LatticeOrderedGroup({Item{"C", 2}}),
             .exact = false,
             .expected = {-1, {}}
         },
@@ -224,7 +224,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
                 Element({Item{"A", 1}}, "A1", 100, 1),
                 Element({Item{"B", 1}}, "B1", 150, 3),
             },
-            .target = LatticeVector({Item{"A", 1}, Item{"B", 2}}),
+            .target = LatticeOrderedGroup({Item{"A", 1}, Item{"B", 2}}),
             .exact = false,
             .expected = {400,
                 {
@@ -239,21 +239,21 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
                 Element({Item{"A", 3}}, "A3", 150, -1),
                 Element({Item{"A", 2}}, "A2", 100, -1),
             },
-            .target = LatticeVector({Item{"A", 1}}),
+            .target = LatticeOrderedGroup({Item{"A", 1}}),
             .exact = true,
             .expected = {-1, {}}
         }
     };
 
     for (const auto& [menus, target, exact, expected] : testCases) {
-        auto [result, ansMenus] = MultiDimensionalKnapsackSolver(const_cast<std::vector<Element>&>(menus), const_cast<LatticeVector&>(target), exact);
+        auto [result, ansMenus] = MultiDimensionalKnapsackSolver(const_cast<std::vector<Element>&>(menus), const_cast<LatticeOrderedGroup&>(target), exact);
         if (result != expected.first || ansMenus != expected.second) {
             std::string failedMessage = "";
             for (const auto& menu : menus) {
                 failedMessage += "Menu: " + menu.name + ", ";
                 failedMessage += "Price: " + std::to_string(menu.price) + ", ";
                 failedMessage += "Limit: " + std::to_string(menu.limit) + ", ";
-                failedMessage += "Items: " + std::string(menu.latticeVector) + "\n";
+                failedMessage += "Items: " + std::string(menu.latticeOrderedGroup) + "\n";
             }
             failedMessage += "Target: " + std::string(target) + ", Exact: " + std::to_string(exact) + "\n";
             failedMessage += "Expected: " + std::to_string(expected.first) + ", Got: " + std::to_string(result) + "\n";
@@ -262,7 +262,7 @@ std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test() {
                 failedMessage += "  Menu: " + menu.name + ", ";
                 failedMessage += "Price: " + std::to_string(menu.price) + ", ";
                 failedMessage += "Limit: " + std::to_string(menu.limit) + ", ";
-                failedMessage += "Items: " + std::string(menu.latticeVector);
+                failedMessage += "Items: " + std::string(menu.latticeOrderedGroup);
             }
             return {false, failedMessage};
         }
