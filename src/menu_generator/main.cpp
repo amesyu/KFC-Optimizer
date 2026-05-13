@@ -99,12 +99,12 @@ public:
 
     LatticeVector& operator+=(const LatticeVector& other) {
         *this = *this + other; 
-        this.normalize();
+        this->normalize();
         return *this;
     }
     LatticeVector& operator-=(const LatticeVector& other) {
         *this = *this - other;
-        this.normalize();
+        this->normalize();
         return *this;
     }
 
@@ -168,40 +168,6 @@ std::vector<Menu> Product(const std::vector<Menu>& menus1, const std::vector<Men
 
 
 int main() {
-    /*
-    Input (from stdin):
-    
-    S = MENUNAME (string)
-    K = Base Price (int)
-    L = Limit of Menu (int, -1 for unlimited)
-    N = Count of Homogeneous,
-    M_1 = size_of_selection
-    name1 name2 ... nameM_1
-    AddPrice1 AddPrice2 ... AddPriceM_1
-    count1
-    M2 = size_of_selection
-    ...
-    ...
-    M_N = size_of_selection
-    name1 name2 ... nameM_N
-    AddPrice1 AddPrice2 ... AddPriceM_N
-    count_N
-    */
-
-    /*
-    output: each menu vector to menu.json
-
-    {
-        {
-            "name": "Menu1",
-            "items": {"A": 1, "B": 2},
-            "price": 300,
-            "limit": -1
-        },
-        ...
-    }
-    */
-
     std::string menuName; std::cin >> menuName;
     int basePrice; std::cin >> basePrice;
     int limit; std::cin >> limit;
@@ -219,16 +185,6 @@ int main() {
     }
 
     std::cerr << "Generated " << result.size() << " menu combinations." << std::endl;
-    // 一旦は標準出力に出す
-    /*
-    for (const auto& [vec, price] : result) {
-        std::cout << "Menu: " << menuName << " Price: " << price << " Items: ";
-        for (const auto& item : vec) {
-            std::cout << item.name << " x" << item.count << " ";
-        }
-        std::cout << std::endl;
-    }
-    */
 
     // json形式で出力
     std::cout << "[\n";
