@@ -122,12 +122,13 @@ public:
 
 struct Element {
     LatticeOrderedGroup latticeOrderedGroup;
+    std::string name;
     int price;
     int limit;
 
     Element() = default;
-    Element(const LatticeOrderedGroup& latticeOrderedGroup, int price, int limit = -1) 
-        : latticeOrderedGroup(latticeOrderedGroup), price(price), limit(limit) {}
+    Element(const LatticeOrderedGroup& latticeOrderedGroup, std::string name, int price, int limit = -1) 
+        : latticeOrderedGroup(latticeOrderedGroup), name(name), price(price), limit(limit) {}
 };
 
 using Menu = std::pair<LatticeOrderedGroup, int>;
@@ -166,14 +167,50 @@ std::vector<Menu> Product(const std::vector<Menu>& menus1, const std::vector<Men
     return result;
 }
 
+Element ConvertToElement(std::string menuName, int limit, std::pair<LatticeOrderedGroup, int> menu) {
+    Element element(
+        menu.first,
+        menuName,
+        menu.second,
+        limit
+    );
+    return element;
+}
 
-int main() {
+void OutputMenu(const std::vector<Element>& elements, std::ostream& out) {
+    out << "[\n";
+    for (size_t i = 0; i < elements.size(); ++i) {
+        auto [vec, name, price, limit] = elements[i];
+        out << "  {\n";
+        out << "    \"name\": \"" << name << "\",\n";
+        out << "    \"limit\": " << limit << ",\n";
+        out << "    \"price\": " << price << ",\n";
+        out << "    \"items\": {\n";
+        for (size_t j = 0; j < vec.size(); ++j) {
+            const auto& item = vec[j];
+            out << "      \"" << item.name << "\": " << item.count;
+            if (j + 1 < vec.size()) out << ",";
+            out << "\n"; 
+        }
+        out << "    }\n";
+        out << "  }";
+        if (i + 1 < elements.size()) out << ",";
+        out << "\n";
+    }
+    out << "]\n";
+
+}
+
+int main(int argc, char* argv[]) {
     std::string menuName; std::cin >> menuName;
     int basePrice; std::cin >> basePrice;
     int limit; std::cin >> limit;
     int N; std::cin >> N;
 
-    std::vector<std::pair<LatticeOrderedGroup, int>> result = {make_pair(LatticeOrderedGroup(), basePrice)};
+    std::vector<std::pair<LatticeOrderedGroup, int>> result = {
+        std::make_pair(LatticeOrderedGroup(), basePrice)
+    };
+
     for (int i = 0; i < N; ++i) {
         int M; std::cin >> M;
         std::vector<std::pair<std::string, int>> items(M);
@@ -184,27 +221,13 @@ int main() {
         result = Product(result, homogeneousMenus);
     }
 
+    std::vector<Element> elements;
+    for (const auto& menu : result) {
+        elements.push_back(ConvertToElement(menuName, limit, menu));
+    }
+    
+    OutputMenu(elements, std::cout);
+    
     std::cerr << "Generated " << result.size() << " menu combinations." << std::endl;
 
-    // json形式で出力
-    std::cout << "[\n";
-    for (size_t i = 0; i < result.size(); ++i) {
-        const auto& [vec, price] = result[i];
-        std::cout << "  {\n";
-        std::cout << "    \"name\": \"" << menuName << "\",\n";
-        std::cout << "    \"price\": " << price << ",\n";
-        std::cout << "    \"limit\": " << limit << ",\n";
-        std::cout << "    \"items\": {\n";
-        for (size_t j = 0; j < vec.size(); ++j) {
-            const auto& item = vec[j];
-            std::cout << "      \"" << item.name << "\": " << item.count;
-            if (j + 1 < vec.size()) std::cout << ",";
-            std::cout << "\n"; 
-        }
-        std::cout << "    }\n";
-        std::cout << "  }";
-        if (i + 1 < result.size()) std::cout << ",";
-        std::cout << "\n";
-    }
-    std::cout << "]\n";
 }
