@@ -4,11 +4,18 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-shopt -s globstar nullglob
+output_file="${1:-menu.json}"
+mode="${2:-lunch}"
 
 inputs=()
 
-for file in menu_query/**/*.in; do
+if [ "$mode" = "normal" ]; then
+    mapfile -t files < <(find menu_query -type f -name '*.in' ! -path 'menu_query/ランチメニュー/*' | sort)
+else
+    mapfile -t files < <(find menu_query -type f -name '*.in' | sort)
+fi
+
+for file in "${files[@]}"; do
     echo "Processing $file"
 
     json=$(./a.out < "$file")
@@ -16,10 +23,10 @@ for file in menu_query/**/*.in; do
 done
 
 if [ ${#inputs[@]} -gt 0 ]; then
-    printf '%s\n' "${inputs[@]}" | jq -s '.' > menu.json
+    printf '%s\n' "${inputs[@]}" | jq -s '.' > "$output_file"
 
     echo "Generated:"
-    realpath menu.json
+    realpath "$output_file"
 else
     echo "No .in files found."
 fi

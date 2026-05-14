@@ -12,8 +12,15 @@ $(TARGET): $(SRC)
 gen: $(TARGET)
 	./generate.sh
 
+gen_lunch: $(TARGET)
+	./generate.sh menu_lunch.json lunch
+
+gen_normal: $(TARGET)
+	./generate.sh menu_normal.json normal
+
 clean:
 	rm -f $(TARGET)
-	rm -f menu.json
+	rm -f menu_lunch.json
+	rm -f menu_normal.json
 
-.PHONY: all gen clean
+.PHONY: all gen gen_lunch gen_normal clean
