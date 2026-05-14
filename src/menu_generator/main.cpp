@@ -14,12 +14,12 @@ bool operator<(const Item& a, const Item& b) {
 using ItemsMap = std::map<std::string, int>;
 using Items = std::vector<Item>;
 
-struct LatticeVector : public std::vector<Item> {
+struct LatticeOrderedGroup : public std::vector<Item> {
 public:
     using base = std::vector<Item>;
-    LatticeVector() = default;
-    LatticeVector(const base& items) : base(items) { normalize(); }
-    LatticeVector(std::initializer_list<Item> il) : base(il) { normalize(); }
+    LatticeOrderedGroup() = default;
+    LatticeOrderedGroup(const base& items) : base(items) { normalize(); }
+    LatticeOrderedGroup(std::initializer_list<Item> il) : base(il) { normalize(); }
 
     // 正規化: name でソートして同名は合算、count=0 は除去
     void normalize() {
@@ -42,12 +42,12 @@ public:
     }
 
     // 全順序比較(mapでのキーにするために必要)
-    bool less(const LatticeVector& other) const {
+    bool less(const LatticeOrderedGroup& other) const {
         return static_cast<const base&>(*this) < static_cast<const base&>(other);
     }
 
     // meet は要素ごとの min を取る
-    LatticeVector meet(const LatticeVector& other) const {
+    LatticeOrderedGroup meet(const LatticeOrderedGroup& other) const {
         ItemsMap aMap, bMap;
         for (const auto& it : *this) aMap[it.name] = it.count;
         for (const auto& it : other) bMap[it.name] = it.count;
@@ -56,13 +56,13 @@ public:
             int m = std::min(cnt, bMap[name]);
             if (m > 0) newItems.push_back({name, m});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    bool operator<(const LatticeVector& other) const { return less(other); }
+    bool operator<(const LatticeOrderedGroup& other) const { return less(other); }
 
     // 加算は要素ごとの和を取る
-    LatticeVector operator+(const LatticeVector& other) const {
+    LatticeOrderedGroup operator+(const LatticeOrderedGroup& other) const {
         ItemsMap countMap;
         for (const auto& it : *this) countMap[it.name] += it.count;
         for (const auto& it : other) countMap[it.name] += it.count;
@@ -70,39 +70,39 @@ public:
         for (auto& [name, count] : countMap) {
             if (count > 0) newItems.push_back({name, count});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    LatticeVector operator-(const LatticeVector& other) const {
+    LatticeOrderedGroup operator-(const LatticeOrderedGroup& other) const {
         ItemsMap countMap;
         for (const auto& it : *this) countMap[it.name] += it.count;
         for (const auto& it : other) countMap[it.name] -= it.count;
         std::vector<Item> newItems;
         for (auto& [name, count] : countMap) {
-            if (count < 0) throw std::runtime_error("negative count in LatticeVector subtraction");
+            if (count < 0) throw std::runtime_error("negative count in LatticeOrderedGroup subtraction");
             if (count > 0) newItems.push_back({name, count});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    LatticeVector operator*(int scalar) const {
+    LatticeOrderedGroup operator*(int scalar) const {
         std::vector<Item> newItems;
         for (const auto& it : *this) {
             if (scalar * it.count > 0) newItems.push_back({it.name, scalar * it.count});
         }
-        return LatticeVector(newItems);
+        return LatticeOrderedGroup(newItems);
     }
 
-    bool operator==(const LatticeVector& other) const {
+    bool operator==(const LatticeOrderedGroup& other) const {
         return this->less(other) == false && other.less(*this) == false;
     }
 
-    LatticeVector& operator+=(const LatticeVector& other) {
+    LatticeOrderedGroup& operator+=(const LatticeOrderedGroup& other) {
         *this = *this + other; 
         this->normalize();
         return *this;
     }
-    LatticeVector& operator-=(const LatticeVector& other) {
+    LatticeOrderedGroup& operator-=(const LatticeOrderedGroup& other) {
         *this = *this - other;
         this->normalize();
         return *this;
@@ -121,21 +121,21 @@ public:
 };
 
 struct Element {
-    LatticeVector latticeVector;
+    LatticeOrderedGroup latticeOrderedGroup;
     int price;
     int limit;
 
     Element() = default;
-    Element(const LatticeVector& latticeVector, int price, int limit = -1) 
-        : latticeVector(latticeVector), price(price), limit(limit) {}
+    Element(const LatticeOrderedGroup& latticeOrderedGroup, int price, int limit = -1) 
+        : latticeOrderedGroup(latticeOrderedGroup), price(price), limit(limit) {}
 };
 
-using Menu = std::pair<LatticeVector, int>;
+using Menu = std::pair<LatticeOrderedGroup, int>;
 
 std::vector<Menu> Homogeneous(std::vector<std::pair<std::string, int>> items, int count) {
     std::vector<Menu> result;
 
-    LatticeVector current;
+    LatticeOrderedGroup current;
     int additionalPrice = 0;
     auto solve = [&](auto&& self, int idx, int remaining) -> void {
         if (idx == (int)items.size()) {
@@ -143,7 +143,7 @@ std::vector<Menu> Homogeneous(std::vector<std::pair<std::string, int>> items, in
             return;
         }
         for (int cnt = remaining; cnt >= 0; --cnt) {
-            LatticeVector addVec{Item{items[idx].first, cnt}};
+            LatticeOrderedGroup addVec{Item{items[idx].first, cnt}};
             current += addVec;
             additionalPrice += items[idx].second * cnt;
             self(self, idx + 1, remaining - cnt);
@@ -173,7 +173,7 @@ int main() {
     int limit; std::cin >> limit;
     int N; std::cin >> N;
 
-    std::vector<std::pair<LatticeVector, int>> result = {make_pair(LatticeVector(), basePrice)};
+    std::vector<std::pair<LatticeOrderedGroup, int>> result = {make_pair(LatticeOrderedGroup(), basePrice)};
     for (int i = 0; i < N; ++i) {
         int M; std::cin >> M;
         std::vector<std::pair<std::string, int>> items(M);
