@@ -1,3 +1,4 @@
 *.out
+*.o
 *.json
 *__pycache__

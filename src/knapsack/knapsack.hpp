@@ -48,5 +48,7 @@ struct Element {
 #include <utility>
 #include <vector>
 
+std::vector<Element> LoadElementsFromJsonFile(const std::string& jsonPath);
+LatticeOrderedGroup LoadTargetFromJsonFile(const std::string& jsonPath);
 std::pair<int, std::vector<Element>> MultiDimensionalKnapsackSolver(std::vector<Element>& menus, LatticeOrderedGroup& target, bool exact = true);
 std::pair<bool, std::string> MultiDimensionalKnapsackSolver_Test();
