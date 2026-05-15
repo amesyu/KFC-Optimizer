@@ -13,10 +13,12 @@ COPY backend/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 COPY . /app
-# Generate menu JSON assets into frontend/src/assets so backend can load them at runtime
+
+EXPOSE 8000
+
+# Generate menu JSON assets during image build so backend can load them at runtime
 RUN mkdir -p /app/frontend/src/assets && \
 	cd /app/src/menu_generator && \
 	make gen_all OUTPUT_DIR=/app/frontend/src/assets || echo "menu generation failed"
-EXPOSE 8000
 
 CMD ["uvicorn", "backend.web_app:app", "--host", "0.0.0.0", "--port", "8000"]
