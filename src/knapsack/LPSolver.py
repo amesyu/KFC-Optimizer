@@ -35,6 +35,7 @@ def solve_menu_optimization(menu_data, target_items, exact_match=False):
         choices.append(var)
     
     # 目的関数
+    print(len(menus), len(choices))
     prob += pulp.lpSum([menus[i]["price"] * choices[i] for i in range(len(menus))])
     for d_idx, item_name in enumerate(item_list):
         item_sum = [menus[i]["items"].get(item_name, 0) * choices[i] for i in range(len(menus))]
@@ -67,7 +68,7 @@ if os.path.exists(file_path):
         raw_data = json.load(f)
 
     # 目標
-    target = {"オリジナルチキン": 7, "ポテトS": 2, "ビスケット": 2}
+    target = {"オリジナルチキン": 11, "ポテトS": 9, "ビスケット": 3, "チキンフィレバーガー": 2}
 
     result = solve_menu_optimization(raw_data, target, False)
     
