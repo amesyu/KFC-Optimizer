@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && \
-	apt-get install -y build-essential nlohmann-json3-dev ca-certificates && \
+	apt-get install -y build-essential nlohmann-json3-dev ca-certificates jq && \
 	rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt /app/requirements.txt
