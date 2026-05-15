@@ -18,7 +18,7 @@ fi
 for file in "${files[@]}"; do
     echo "Processing $file"
 
-    json=$(./a.out < "$file")
+    json=$(./main.out < "$file")
     inputs+=("$json")
 done
 
