@@ -24,6 +24,12 @@ gen_normal: clean $(TARGET) $(NAME_GEN)
 	./generate.sh menu_normal.json normal
 	./$(NAME_GEN) menu_normal.json > menu_names.json
 
+gen_all: clean $(TARGET) $(NAME_GEN)
+	./generate.sh menu_lunch.json lunch
+	./$(NAME_GEN) menu_lunch.json > menu_names.json
+	./generate.sh menu_normal.json normal
+	./$(NAME_GEN) menu_normal.json > menu_names.json
+	
 clean_gen:
 	rm -f $(TARGET)
 	rm -f $(NAME_GEN)

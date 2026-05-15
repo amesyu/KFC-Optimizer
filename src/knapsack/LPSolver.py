@@ -61,7 +61,7 @@ def add_constraints(prob, menus, choices, item_list, target_vector, exact_match=
             prob += pulp.lpSum(item_sum) >= target_vector[d_idx]
 
 
-def solve_menu_optimization(menu_data, target_items, exact_match=False):
+def solve_menu_optimization(menu_data, target_items, exact=False):
     """Solve menu optimization problem using LP."""
     menus = flatten_menus(menu_data)
     item_list, item_to_idx = build_item_list(menus, target_items)
@@ -71,7 +71,7 @@ def solve_menu_optimization(menu_data, target_items, exact_match=False):
     choices = create_lp_variables(menus)
     
     add_objective_function(prob, menus, choices)
-    add_constraints(prob, menus, choices, item_list, target_vector, exact_match)
+    add_constraints(prob, menus, choices, item_list, target_vector, exact)
     
     status = prob.solve(pulp.PULP_CBC_CMD(msg=False))
     
@@ -98,8 +98,8 @@ def load_menu_json(file_path):
         return json.load(f)
 
 
-def load_target_from_json(file_path):
-    """Load target items from JSON file (ask_sample.json_sample format)."""
+def load_problem_config_from_json(file_path):
+    """Load exact/lunch flags and target items from JSON file."""
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -116,7 +116,11 @@ def load_target_from_json(file_path):
     if "items" not in obj or not isinstance(obj["items"], dict):
         raise ValueError("Target JSON must contain 'items' object")
     
-    return obj["items"]
+    return {
+        "exact": bool(obj.get("exact", False)),
+        "lunch": bool(obj.get("lunch", False)),
+        "items": obj["items"],
+    }
 
 
 def format_and_print_result(result):
@@ -134,12 +138,14 @@ def format_and_print_result(result):
 
 def main():
     """Main entry point."""
-    menu_file = '../menu_generator/menu_lunch.json'
+    menu_normal_file = '../menu_generator/menu_normal.json'
+    menu_lunch_file = '../menu_generator/menu_lunch.json'
     target_file = '../menu_generator/ask_sample.json_sample'
     try:
+        config = load_problem_config_from_json(target_file)
+        menu_file = menu_lunch_file if config["lunch"] else menu_normal_file
         raw_data = load_menu_json(menu_file)
-        target = load_target_from_json(target_file)
-        result = solve_menu_optimization(raw_data, target, False)
+        result = solve_menu_optimization(raw_data, config["items"], config["exact"])
         format_and_print_result(result)
     except (FileNotFoundError, ValueError) as e:
         print(f"エラー: {e}")
