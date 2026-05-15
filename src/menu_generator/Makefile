@@ -3,9 +3,14 @@ CXXFLAGS := -std=c++20 -O2
 
 TARGET := main.out
 NAME_GEN := menu_names_gen.out
-SRC := main.cpp
+SRC := menu_generator.cpp
 
-all: $(TARGET)
+# OUTPUT_DIR can be set from environment or make command line.
+# Default to frontend assets so running 'make gen_all' from this folder
+# populates frontend/src/assets.
+OUTPUT_DIR ?= ../../frontend/src/assets
+
+all: gen_all
 
 $(TARGET): $(SRC)
 	g++ $(CXXFLAGS) -o $(TARGET) $(SRC)
@@ -13,32 +18,12 @@ $(TARGET): $(SRC)
 $(NAME_GEN): menu_names_generator.cpp
 	g++ $(CXXFLAGS) -o $(NAME_GEN) menu_names_generator.cpp
 
-gen: $(TARGET)
-	./generate.sh
+gen_all: $(TARGET) $(NAME_GEN)
+	mkdir -p $(OUTPUT_DIR)
+	./generate.sh menu_lunch.json lunch $(OUTPUT_DIR)
+	./generate.sh menu_normal.json normal $(OUTPUT_DIR)
+	./generate.sh menu_lunch_no_kids.json lunch_no_kids $(OUTPUT_DIR)
+	./generate.sh menu_normal_no_kids.json normal_no_kids $(OUTPUT_DIR)
+	./$(NAME_GEN) $(OUTPUT_DIR)/menu_lunch.json $(OUTPUT_DIR)/menu_normal.json $(OUTPUT_DIR)/menu_lunch_no_kids.json $(OUTPUT_DIR)/menu_normal_no_kids.json > $(OUTPUT_DIR)/menu_names.json
 
-gen_lunch: clean $(TARGET) $(NAME_GEN)
-	./generate.sh menu_lunch.json lunch
-	./$(NAME_GEN) menu_lunch.json > menu_names.json
-
-gen_normal: clean $(TARGET) $(NAME_GEN)
-	./generate.sh menu_normal.json normal
-	./$(NAME_GEN) menu_normal.json > menu_names.json
-
-gen_all: clean $(TARGET) $(NAME_GEN)
-	./generate.sh menu_lunch.json lunch
-	./$(NAME_GEN) menu_lunch.json > menu_names.json
-	./generate.sh menu_normal.json normal
-	./$(NAME_GEN) menu_normal.json > menu_names.json
-	
-clean_gen:
-	rm -f $(TARGET)
-	rm -f $(NAME_GEN)
-
-clean:
-	rm -f $(TARGET)
-	rm -f $(NAME_GEN)
-	rm -f menu_lunch.json
-	rm -f menu_normal.json
-	rm -f menu_names.json
-
-.PHONY: all gen gen_lunch gen_normal clean_gen clean
+.PHONY: all gen_all
