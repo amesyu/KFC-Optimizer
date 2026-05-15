@@ -10,6 +10,8 @@ permissions:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_API_BASE: ${{ secrets.FRONTEND_API_BASE }}
     steps:
       - uses: actions/checkout@v4
 
