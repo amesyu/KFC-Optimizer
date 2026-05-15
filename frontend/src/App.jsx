@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import menuNamesJson from './assets/menu_names.json'
 
 export default function App(){
-  const [menuFile, setMenuFile] = useState('normal')
+  const [menuFile, setMenuFile] = useState('lunch')
   const [excludeKids, setExcludeKids] = useState(false)
   const [items, setItems] = useState([{name:'', count:1}])
   const [exact, setExact] = useState(false)
@@ -131,13 +131,13 @@ export default function App(){
         </section>
 
         <section className="card">
-          <h2>Targets</h2>
+          <h2>欲しい個数</h2>
           <datalist id="menu-names">
             {menuNamesJson.items.map((n,idx)=>(<option key={idx} value={n} />))}
           </datalist>
           {items.map((it,i)=> (
             <div className="target-row" key={i}>
-              <input list="menu-names" placeholder="item name" value={it.name} onChange={e=>updateItem(i,'name',e.target.value)} />
+              <input list="menu-names" placeholder="メニュー名" value={it.name} onChange={e=>updateItem(i,'name',e.target.value)} />
               <input type="number" min="0" value={it.count} onChange={e=>updateItem(i,'count',e.target.value)} />
               <button onClick={()=>removeItem(i)}>Remove</button>
             </div>
@@ -157,7 +157,7 @@ export default function App(){
             </label>
           </div>
           <div className="actions">
-            <button onClick={solve} disabled={loading}>{loading? 'Solving...':'Solve'}</button>
+            <button onClick={solve} disabled={loading}>{loading? '計算中...':'計算'}</button>
           </div>
         </section>
 
