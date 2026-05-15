@@ -8,13 +8,13 @@ Setup
 cd KFC-Optimizer
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
 Run (backend)
 
 ```bash
-uvicorn web_app:app --reload --port 8000
+uvicorn backend.web_app:app --reload --port 8000
 ```
 
 During development open the frontend dev server (see below). After building the frontend (`npm run build`) the backend will serve the built SPA at `http://localhost:8000/`.
@@ -28,7 +28,7 @@ Development
 ```bash
 cd KFC-Optimizer
 source .venv/bin/activate
-uvicorn web_app:app --reload --port 8000
+uvicorn backend.web_app:app --reload --port 8000
 ```
 
 2. In a separate terminal, run the frontend dev server:

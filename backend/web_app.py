@@ -8,7 +8,8 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 
 
 BASE_DIR = os.path.dirname(__file__)
-SRC_DIR = os.path.join(BASE_DIR, "src")
+PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, ".."))
+SRC_DIR = os.path.join(PROJECT_ROOT, "src")
 if SRC_DIR not in sys.path:
     sys.path.insert(0, SRC_DIR)
 
@@ -37,7 +38,7 @@ def load_builtin_menu(menu_file: str, exclude_kids: bool = False):
 
     suffix = "_no_kids" if exclude_kids else ""
     filename = f"menu_{menu_file}{suffix}.json"
-    asset_path = os.path.join(BASE_DIR, "frontend", "src", "assets", filename)
+    asset_path = os.path.join(PROJECT_ROOT, "frontend", "src", "assets", filename)
     if not os.path.exists(asset_path):
         raise FileNotFoundError(f"asset not found: {asset_path}")
 
@@ -47,11 +48,11 @@ def load_builtin_menu(menu_file: str, exclude_kids: bool = False):
 
 @app.get("/")
 def index():
-    dist_index = os.path.join(BASE_DIR, "frontend", "dist", "index.html")
+    dist_index = os.path.join(PROJECT_ROOT, "frontend", "dist", "index.html")
     if os.path.exists(dist_index):
         return FileResponse(dist_index, media_type="text/html")
 
-    template_path = os.path.join(BASE_DIR, "templates", "index.html")
+    template_path = os.path.join(PROJECT_ROOT, "templates", "index.html")
     if os.path.exists(template_path):
         return HTMLResponse(open(template_path, "r", encoding="utf-8").read())
 

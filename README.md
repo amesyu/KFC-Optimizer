@@ -21,11 +21,12 @@ make gen_all
 
 GitHub Actions のデプロイでも同じ手順を使います。
 
-## Python Dependencies
+## Backend
 
-Web API を動かすには Python 側の依存も入れます。
+Web API を動かすには Python 側の依存も入れます。`backend/` に置いています。
 
 ```bash
+cd backend
 python -m pip install -r requirements.txt
 ```
 
@@ -38,5 +39,23 @@ python -m pip install -r requirements.txt
 バックエンド起動例:
 
 ```bash
+cd backend
 uvicorn web_app:app --reload --port 8000
+```
+
+## Frontend
+
+フロントエンドは `frontend/` にあります。
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+ビルドする場合:
+
+```bash
+cd frontend
+npm run build
 ```
