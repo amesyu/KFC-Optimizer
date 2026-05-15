@@ -1,4 +1,6 @@
 *.out
 *.o
-*.json
 *__pycache__
+src/menu_generator/*.json
+frontend/src/assets/*.json
+frontend/dist/
