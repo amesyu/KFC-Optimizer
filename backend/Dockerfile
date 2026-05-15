@@ -21,4 +21,5 @@ RUN mkdir -p /app/frontend/src/assets && \
 	cd /app/src/menu_generator && \
 	make gen_all OUTPUT_DIR=/app/frontend/src/assets || echo "menu generation failed"
 
-CMD ["uvicorn", "backend.web_app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use shell form so $PORT (set by Render) is expanded; fallback to 8000 if unset
+CMD ["sh", "-c", "uvicorn backend.web_app:app --host 0.0.0.0 --port ${PORT:-8000}"]
