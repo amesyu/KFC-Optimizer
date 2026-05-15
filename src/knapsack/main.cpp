@@ -116,7 +116,7 @@ struct Element {
 
     Element() = default;
     Element(const LatticeOrderedGroup& latticeOrderedGroup, std::string name, int price, int limit = -1) 
-        : latticeOrderedGroup(latticeOrderedGroup), price(price), limit(limit) {}
+        : latticeOrderedGroup(latticeOrderedGroup), name(name), price(price), limit(limit) {}
 
     bool operator==(const Element& other) const {
         if (name != other.name) return false;

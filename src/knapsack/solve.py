@@ -67,9 +67,9 @@ if os.path.exists(file_path):
         raw_data = json.load(f)
 
     # 目標
-    target = {"オリジナルチキン": 2, "チキンフィレバーガー": 2, "ポテトS": 2}
+    target = {"オリジナルチキン": 7, "ポテトS": 2, "ビスケット": 2}
 
-    result = solve_menu_optimization(raw_data, target, True)
+    result = solve_menu_optimization(raw_data, target, False)
     
     if result["status"] == "Optimal":
         print(f"合計金額: {result['total_price']}円")

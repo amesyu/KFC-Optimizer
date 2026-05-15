@@ -129,6 +129,13 @@ struct Element {
     Element() = default;
     Element(const LatticeOrderedGroup& latticeOrderedGroup, std::string name, int price, int limit = -1) 
         : latticeOrderedGroup(latticeOrderedGroup), name(name), price(price), limit(limit) {}
+
+    bool operator==(const Element& other) const {
+        if (name != other.name) return false;
+        if (price != other.price) return false;
+        if (limit != other.limit) return false;
+        return latticeOrderedGroup == other.latticeOrderedGroup;
+    }
 };
 
 using Menu = std::pair<LatticeOrderedGroup, int>;
