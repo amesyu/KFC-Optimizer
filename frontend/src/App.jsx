@@ -94,7 +94,9 @@ export default function App(){
     const payload = { menu_file: menuFile, exclude_kids: excludeKids, target, exact }
     setLoading(true)
     try{
-      const res = await fetch('/solve', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+      const apiHost = import.meta.env.VITE_API_BASE || ''
+      const url = apiHost ? `${apiHost.replace(/\/+$/,'')}/solve` : '/solve'
+      const res = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
       const ct = res.headers.get('content-type') || ''
       let data
       if(ct.includes('application/json')){
