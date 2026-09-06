@@ -1,4 +1,4 @@
-name: Build and Deploy Frontend (generate menu names)
+name: Build and Deploy Frontend
 
 on:
   push:
@@ -10,20 +10,8 @@ permissions:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    env:
-      VITE_API_BASE: ${{ secrets.FRONTEND_API_BASE }}
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install C++ dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nlohmann-json3-dev
-
-      - name: Generate menu JSONs into frontend assets
-        run: |
-          cd src/menu_generator
-          make gen_all
 
       - name: Setup Node
         uses: actions/setup-node@v4

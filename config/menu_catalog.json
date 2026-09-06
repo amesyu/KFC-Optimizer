@@ -1,0 +1,2818 @@
+{
+  "version": 2,
+  "items": [
+    "BOXポテト",
+    "ちゅる～りぃ(ブルーハワイ)",
+    "てりやきツイスター",
+    "オリジナルチキン",
+    "キッズグッズ",
+    "クリスピー",
+    "コールスローM",
+    "コールスローS",
+    "ダブルチキンフィレバーガー",
+    "チキンフィレバーガー",
+    "チョコパイ",
+    "チーズチキンフィレバーガー",
+    "ドリンクL",
+    "ドリンクM",
+    "ドリンクS",
+    "ナゲット",
+    "ビスケット",
+    "ペッパーマヨツイスター",
+    "ホットコーヒー",
+    "ポテトL",
+    "ポテトS",
+    "リプトンホットティー",
+    "レモン香るパリパリ旨塩チキン",
+    "和風チキンカツバーガー",
+    "竜田バーガー",
+    "辛口チキンフィレバーガー",
+    "骨なしケンタッキー"
+  ],
+  "menus": [
+    {
+      "name": "キッズオリジナルチキンセット",
+      "base_price": 590,
+      "limit": -1,
+      "category": "キッズメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクS",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクM",
+              "price_delta": 20
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 70
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "キッズグッズ",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "キッズナゲットセット",
+      "base_price": 590,
+      "limit": -1,
+      "category": "キッズメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ナゲット",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクS",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクM",
+              "price_delta": 20
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 70
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "キッズグッズ",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ドリンク単品",
+      "base_price": 0,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ちゅる～りぃ(ブルーハワイ)",
+              "price_delta": 440
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "クリスピー単品(半額)",
+      "base_price": 140,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "パリパリ旨塩おためしバーレル",
+      "base_price": 2980,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "レモン香るパリパリ旨塩チキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 5,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトL",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "レモン香るパリパリ旨塩チキン",
+      "base_price": 340,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "レモン香るパリパリ旨塩チキン",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "レモン香るパリパリ旨塩チキン食べくらべ4ピースパック",
+      "base_price": 1540,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "レモン香るパリパリ旨塩チキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            },
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            },
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            },
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローS",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "レモン香るパリパリ旨塩チキン食べくらべ6ピースパック",
+      "base_price": 2290,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "レモン香るパリパリ旨塩チキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            },
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            },
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            },
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローS",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "レモン香るパリパリ旨塩チキン食べくらべセット",
+      "base_price": 990,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "レモン香るパリパリ旨塩チキン",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "竜田バーガー単品",
+      "base_price": 540,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "竜田バーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "竜田バーガーよくばりセット",
+      "base_price": 1250,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "竜田バーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "竜田バーガーセット",
+      "base_price": 950,
+      "limit": -1,
+      "category": "キャンペーン",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "竜田バーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "クリスピー単品",
+      "base_price": 290,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "コールスロー単品",
+      "base_price": 0,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "コールスローS",
+              "price_delta": 290
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 390
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チョコパイ単品",
+      "base_price": 290,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ナゲット単品",
+      "base_price": 480,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ナゲット",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ビスケット単品",
+      "base_price": 290,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ポテト単品",
+      "base_price": 0,
+      "limit": -1,
+      "category": "サイドメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 290
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 490
+            },
+            {
+              "name": "BOXポテト",
+              "price_delta": 990
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスター単品",
+      "base_price": 380,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスターよくばりセット",
+      "base_price": 1090,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスターセット",
+      "base_price": 790,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "オリジナルチキン2ピースセット",
+      "base_price": 1030,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "オリジナルチキン3ピースよくばりセット",
+      "base_price": 1330,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガー単品",
+      "base_price": 680,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガーよくばりセット",
+      "base_price": 1390,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガーセット",
+      "base_price": 1090,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガー単品",
+      "base_price": 440,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガーよくばりセット",
+      "base_price": 1150,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガーセット",
+      "base_price": 850,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガー単品",
+      "base_price": 470,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガーよくばりセット",
+      "base_price": 1180,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガーセット",
+      "base_price": 880,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスター単品",
+      "base_price": 380,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスターよくばりセット",
+      "base_price": 1090,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスターセット",
+      "base_price": 790,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガー単品",
+      "base_price": 440,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガーよくばりセット",
+      "base_price": 1150,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガーセット",
+      "base_price": 850,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガー単品",
+      "base_price": 470,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガーよくばりセット",
+      "base_price": 1180,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガーセット",
+      "base_price": 880,
+      "limit": -1,
+      "category": "セットメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "オリジナルチキン単品",
+      "base_price": 330,
+      "limit": -1,
+      "category": "チキン単品",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "骨なしケンタッキー単品",
+      "base_price": 330,
+      "limit": -1,
+      "category": "チキン単品",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "トクトク4ピースパック",
+      "base_price": 1590,
+      "limit": -1,
+      "category": "トクトクパック",
+      "attributes": ["pack"],
+      "groups": [
+        {
+          "choose_count": 4,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            },
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            },
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            },
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローS",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "トクトク6ピースパック",
+      "base_price": 2390,
+      "limit": -1,
+      "category": "トクトクパック",
+      "attributes": ["pack"],
+      "groups": [
+        {
+          "choose_count": 6,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            },
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            },
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            },
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローS",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "トクトク8ピースパック",
+      "base_price": 2990,
+      "limit": -1,
+      "category": "トクトクパック",
+      "attributes": ["pack"],
+      "groups": [
+        {
+          "choose_count": 8,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 4,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            },
+            {
+              "name": "クリスピー",
+              "price_delta": 0
+            },
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            },
+            {
+              "name": "チョコパイ",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローS",
+              "price_delta": 0
+            },
+            {
+              "name": "コールスローM",
+              "price_delta": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ポテト2個390円",
+      "base_price": 390,
+      "limit": -1,
+      "category": "トクトクパック",
+      "requires_any_attributes": ["pack"],
+      "groups": [
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ドリンク単品",
+      "base_price": 0,
+      "limit": -1,
+      "category": "ドリンク",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクS",
+              "price_delta": 270
+            },
+            {
+              "name": "ドリンクM",
+              "price_delta": 290
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 340
+            },
+            {
+              "name": "ホットコーヒー",
+              "price_delta": 290
+            },
+            {
+              "name": "リプトンホットティー",
+              "price_delta": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスター単品",
+      "base_price": 380,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスターよくばりセット(ランチ)",
+      "base_price": 950,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "てりやきツイスターセット(ランチ)",
+      "base_price": 650,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "てりやきツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "オリジナルチキン2ピースセット(ランチ)",
+      "base_price": 890,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 2,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "オリジナルチキン3ピースよくばりセット(ランチ)",
+      "base_price": 1190,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 3,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキン＆ビスケットセット(ランチ)",
+      "base_price": 550,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ビスケット",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクS",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクM",
+              "price_delta": 20
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガー単品",
+      "base_price": 680,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガーよくばりセット(ランチ)",
+      "base_price": 1230,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ダブルチキンフィレバーガーセット(ランチ)",
+      "base_price": 930,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ダブルチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガー単品",
+      "base_price": 440,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガーよくばりセット(ランチ)",
+      "base_price": 990,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガーコンビ(ランチ)",
+      "base_price": 550,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チキンフィレバーガーセット(ランチ)",
+      "base_price": 690,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガー単品",
+      "base_price": 470,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガーよくばりセット(ランチ)",
+      "base_price": 1020,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "チーズチキンフィレバーガーセット(ランチ)",
+      "base_price": 720,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "チーズチキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスター単品",
+      "base_price": 380,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスターよくばりセット(ランチ)",
+      "base_price": 950,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ペッパーマヨツイスターセット(ランチ)",
+      "base_price": 650,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ペッパーマヨツイスター",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガー単品",
+      "base_price": 440,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガーよくばりセット",
+      "base_price": 990,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガーコンビ(ランチ)",
+      "base_price": 550,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "和風チキンカツバーガーセット(ランチ)",
+      "base_price": 690,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "和風チキンカツバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガー単品",
+      "base_price": 470,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガーよくばりセット(ランチ)",
+      "base_price": 1020,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "オリジナルチキン",
+              "price_delta": 0
+            },
+            {
+              "name": "骨なしケンタッキー",
+              "price_delta": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "辛口チキンフィレバーガーセット(ランチ)",
+      "base_price": 720,
+      "limit": -1,
+      "category": "ランチメニュー",
+      "groups": [
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "辛口チキンフィレバーガー",
+              "price_delta": 0
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ポテトS",
+              "price_delta": 0
+            },
+            {
+              "name": "ポテトL",
+              "price_delta": 200
+            }
+          ]
+        },
+        {
+          "choose_count": 1,
+          "options": [
+            {
+              "name": "ドリンクM",
+              "price_delta": 0
+            },
+            {
+              "name": "ドリンクL",
+              "price_delta": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
