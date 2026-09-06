@@ -9,6 +9,9 @@ from pathlib import Path
 import pulp
 
 MAX_INPUT_COUNT = 100
+MAX_TARGET_QUANTITY = 1000
+POTATO_QUANTITIES = {"ポテトS": 80, "ポテトL": 160, "BOXポテト": 400}
+POTATO_VECTOR = "ポテト(g)"
 
 
 def menu_path(menu: dict) -> list[str]:
@@ -26,12 +29,12 @@ def is_menu_enabled(catalog: dict, menu: dict) -> bool:
     return all(not disabled_folders.get(tuple(path[:index]), False) for index in range(1, len(path) + 1))
 
 
-def expand_catalog(catalog: dict, mode: str = "lunch", exclude_kids: bool = False) -> list[dict]:
+def expand_catalog(catalog: dict) -> list[dict]:
+    disabled_items = set(catalog.get("disabled_items", []))
+    disabled_items.update(item for item, parent in catalog.get("item_parents", {}).items() if parent in disabled_items)
     menus = [
         menu for menu in catalog["menus"]
         if is_menu_enabled(catalog, menu)
-        and (mode != "normal" or menu_path(menu)[0] != "ランチメニュー")
-        and (not exclude_kids or menu_path(menu)[0] != "キッズメニュー")
     ]
     entries = []
     for menu in menus:
@@ -43,7 +46,9 @@ def expand_catalog(catalog: dict, mode: str = "lunch", exclude_kids: bool = Fals
                 price = 0
                 for index in indexes:
                     option = group["options"][index]
-                    items[option["name"]] = items.get(option["name"], 0) + 1
+                    item_name = POTATO_VECTOR if option["name"] in POTATO_QUANTITIES else option["name"]
+                    item_quantity = catalog.get("item_quantities", {}).get(option["name"], option.get("quantity", POTATO_QUANTITIES.get(option["name"], 1)))
+                    items[item_name] = items.get(item_name, 0) + item_quantity
                     price += option["price_delta"]
                 group_variants.append({"items": items, "price": price})
             variants = [
@@ -67,11 +72,19 @@ def expand_catalog(catalog: dict, mode: str = "lunch", exclude_kids: bool = Fals
             "limit": menu["limit"],
             "attributes": menu.get("attributes", []),
             "requires_any_attributes": menu.get("requires_any_attributes", []),
-        } for variant in variants)
+        } for variant in variants if not disabled_items.intersection(variant["items"]))
     return entries
 
 
 def solve(catalog: dict, target: dict[str, int], exact: bool = False) -> dict:
+    normalized_target = {}
+    for name, quantity in target.items():
+        item_name = POTATO_VECTOR if name in POTATO_QUANTITIES else name
+        item_quantity = quantity * catalog.get("item_quantities", {}).get(name, POTATO_QUANTITIES.get(name, 1))
+        normalized_target[item_name] = normalized_target.get(item_name, 0) + item_quantity
+    target = normalized_target
+    if set(target).intersection(catalog.get("disabled_items", [])):
+        return {"status": "Infeasible", "total_price": None}
     entries = expand_catalog(catalog)
     item_names = sorted(set(catalog["items"]) | set(target))
     problem = pulp.LpProblem("KFC_reference", pulp.LpMinimize)
